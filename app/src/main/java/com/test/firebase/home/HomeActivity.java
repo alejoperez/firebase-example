@@ -6,10 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.test.firebase.R;
+import com.test.firebase.base.BaseActivity;
 import com.test.firebase.login.LoginFragment;
 import com.test.firebase.regiter.RegisterFragment;
 
@@ -19,7 +19,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class HomeActivity extends AppCompatActivity implements IHomeView {
+public class HomeActivity extends BaseActivity implements IHomeView {
 
     @Bind(R.id.home_toolbar)
     Toolbar toolbar;

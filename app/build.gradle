@@ -48,6 +48,10 @@ dependencies {
     // Firebase
     compile 'com.google.firebase:firebase-core:9.0.0'
     compile 'com.google.firebase:firebase-auth:9.0.0'
+    compile 'com.google.firebase:firebase-database:9.0.0'
+
+    //Image Manager
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 
 }
 
