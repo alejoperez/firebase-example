@@ -1,5 +1,6 @@
 package com.test.firebase.regiter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -15,15 +16,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.firebase.R;
+import com.test.firebase.main.MainActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RegisterFragment extends Fragment implements IRegisterView, OnCompleteListener<AuthResult> {
-
-    @Bind(R.id.register_edit_text_name)
-    EditText editTextName;
 
     @Bind(R.id.register_edit_text_email)
     EditText editTextEmail;
@@ -43,11 +42,6 @@ public class RegisterFragment extends Fragment implements IRegisterView, OnCompl
     }
 
     @Override
-    public String getName() {
-        return editTextName.getText().toString();
-    }
-
-    @Override
     public String getEmail() {
         return editTextEmail.getText().toString();
     }
@@ -59,9 +53,7 @@ public class RegisterFragment extends Fragment implements IRegisterView, OnCompl
 
     @Override
     public boolean isValidForm() {
-        return !TextUtils.isEmpty(getName())
-                && !TextUtils.isEmpty(getEmail())
-                && !TextUtils.isEmpty(getPassword());
+        return  !TextUtils.isEmpty(getEmail()) && !TextUtils.isEmpty(getPassword());
     }
 
     @OnClick(R.id.register_button)
@@ -87,7 +79,7 @@ public class RegisterFragment extends Fragment implements IRegisterView, OnCompl
 
     @Override
     public void onRegisterSuccess() {
-        Toast.makeText(getContext(),R.string.register_success,Toast.LENGTH_SHORT).show();
+        goToMainActivity();
     }
 
     @Override
@@ -95,5 +87,12 @@ public class RegisterFragment extends Fragment implements IRegisterView, OnCompl
         if (task.getException() != null && !TextUtils.isEmpty(task.getException().getMessage())) {
             Toast.makeText(getContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void goToMainActivity() {
+        Intent i = new Intent(getActivity(), MainActivity.class);
+        startActivity(i);
+        getActivity().finish();
     }
 }

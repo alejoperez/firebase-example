@@ -1,5 +1,6 @@
 package com.test.firebase.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.test.firebase.R;
+import com.test.firebase.main.MainActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -78,7 +80,7 @@ public class LoginFragment extends Fragment implements ILoginView , OnCompleteLi
 
     @Override
     public void onLoginSuccess() {
-        Toast.makeText(getContext(),R.string.login_success,Toast.LENGTH_SHORT).show();
+        goToMainActivity();
     }
 
     @Override
@@ -86,5 +88,12 @@ public class LoginFragment extends Fragment implements ILoginView , OnCompleteLi
         if (task.getException() != null && !TextUtils.isEmpty(task.getException().getMessage())) {
             Toast.makeText(getContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void goToMainActivity() {
+        Intent i = new Intent(getActivity(), MainActivity.class);
+        startActivity(i);
+        getActivity().finish();
     }
 }

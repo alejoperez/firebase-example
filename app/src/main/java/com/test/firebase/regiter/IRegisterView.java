@@ -9,7 +9,7 @@ public interface IRegisterView {
     void onRegisterSuccess();
     void onRegisterFail(@NonNull Task<AuthResult> task);
     boolean isValidForm();
-    String getName();
     String getEmail();
     String getPassword();
+    void goToMainActivity();
 }

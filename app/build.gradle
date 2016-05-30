@@ -26,6 +26,9 @@ android {
                     'src/main/res-screen/home',
                     'src/main/res-screen/register',
                     'src/main/res-screen/login',
+                    'src/main/res-screen/products',
+                    'src/main/res-screen/profile',
+                    'src/main/res-screen/main'
             ]
         }
     }

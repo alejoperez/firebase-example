@@ -11,4 +11,5 @@ public interface ILoginView {
     boolean isValidForm();
     void onLoginSuccess();
     void onLoginFail(@NonNull Task<AuthResult> task);
+    void goToMainActivity();
 }

@@ -27,6 +27,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.test.firebase.splash.SplashActivity" />
         </activity>
+        <activity
+            android:name=".main.MainActivity"
+            android:label="@string/title_activity_main"
+            android:parentActivityName=".home.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.test.firebase.home.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>
