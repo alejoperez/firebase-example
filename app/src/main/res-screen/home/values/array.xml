@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="home_titles">
+        <item>Login</item>
+        <item>Registro</item>
+    </array>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="register_button">Registrarme</string>
+    <string name="register_email">Correo Electrónico</string>
+    <string name="register_password">Contraseña</string>
+    <string name="register_name">Nombre</string>
+    <string name="register_empty_form">Debes diligenciar todo</string>
+    <string name="register_success">Registro Exitoso</string>
+    <string name="register_fail">Registro fallo</string>
+</resources>

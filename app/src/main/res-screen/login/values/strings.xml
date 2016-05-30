@@ -1,0 +1,8 @@
+<resources>
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="login_email">Correo Electrónico</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_success">Login Exitoso</string>
+    <string name="login_fail">Login Fallo</string>
+    <string name="login_empty_form">Debes diligenciar todo</string>
+</resources>
