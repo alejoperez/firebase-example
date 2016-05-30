@@ -7,5 +7,4 @@ public interface IProfileView {
     String getName();
     void onUpdateProfileSuccess();
     void onUpdateProfileFail();
-    void onLogoutSuccess();
 }

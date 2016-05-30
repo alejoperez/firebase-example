@@ -26,7 +26,7 @@ public class ProfilePresenter implements IProfilePresenter, OnCompleteListener<V
 
     @Override
     public boolean hasProfileChanged(String name) {
-        return name.equals(user.getDisplayName());
+        return !name.equals(user.getDisplayName());
     }
 
     @Override
@@ -51,6 +51,5 @@ public class ProfilePresenter implements IProfilePresenter, OnCompleteListener<V
     @Override
     public void logout() {
         FirebaseAuth.getInstance().signOut();
-        profileView.onLogoutSuccess();
     }
 }

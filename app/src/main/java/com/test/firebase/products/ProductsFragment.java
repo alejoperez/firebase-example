@@ -54,7 +54,9 @@ public class ProductsFragment extends Fragment implements IProductsView {
     }
 
     public void onLoadProductsFail() {
-        Toast.makeText(getContext(),R.string.products_load_fail,Toast.LENGTH_SHORT).show();
+        if (getContext() != null) {
+            Toast.makeText(getContext(),R.string.products_load_fail,Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

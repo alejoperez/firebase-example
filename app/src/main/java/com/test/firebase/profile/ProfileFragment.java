@@ -71,7 +71,7 @@ public class ProfileFragment extends Fragment implements IProfileView {
     }
 
     @OnClick(R.id.profile_logout_button)
-    public void onLogoutSuccess() {
+    public void logout() {
         profilePresenter.logout();
         getActivity().finish();
     }
