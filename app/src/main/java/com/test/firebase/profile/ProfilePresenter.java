@@ -1,6 +1,7 @@
 package com.test.firebase.profile;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -13,6 +14,8 @@ public class ProfilePresenter implements IProfilePresenter, OnCompleteListener<V
     private IProfileView profileView;
 
     private FirebaseUser user;
+
+    private long time;
 
     public ProfilePresenter(IProfileView profileView) {
         this.profileView = profileView;
@@ -36,11 +39,13 @@ public class ProfilePresenter implements IProfilePresenter, OnCompleteListener<V
                 .build();
 
         user.updateProfile(profileUpdates).addOnCompleteListener(this);
+        time = System.currentTimeMillis();
     }
 
 
     @Override
     public void onComplete(@NonNull Task<Void> task) {
+        Log.e("update","update = "+(System.currentTimeMillis()-time));
         if (task.isSuccessful()) {
             profileView.onUpdateProfileSuccess();
         } else {
