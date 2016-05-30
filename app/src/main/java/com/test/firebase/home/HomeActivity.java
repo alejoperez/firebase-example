@@ -42,12 +42,6 @@ public class HomeActivity extends BaseActivity implements IHomeView {
         viewPager.setAdapter(pagerAdapter);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ButterKnife.unbind(this);
-    }
-
     private class HomePagerAdapter extends FragmentStatePagerAdapter {
 
         private List<Fragment> fragmentList = new ArrayList<>();

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="products_load_fail">No se cargaron productos</string>
+</resources>

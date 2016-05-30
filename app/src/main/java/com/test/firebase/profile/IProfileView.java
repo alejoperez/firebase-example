@@ -3,8 +3,9 @@ package com.test.firebase.profile;
 
 public interface IProfileView {
     void loadData();
-    void loadView();
+    void loadView(String name, String email);
     String getName();
-    String getEmail();
-    boolean hasProfileChanged();
+    void onUpdateProfileSuccess();
+    void onUpdateProfileFail();
+    void onLogoutSuccess();
 }

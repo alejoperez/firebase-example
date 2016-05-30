@@ -5,5 +5,6 @@ import com.test.firebase.model.ProductList;
 
 public interface IProductsView {
     void loadData();
-    void loadView(ProductList productList);
+    void onLoadProductsSuccess(ProductList productList);
+    void onLoadProductsFail();
 }

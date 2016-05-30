@@ -4,5 +4,6 @@
     <string name="profile_email">Correo Electrónico</string>
     <string name="profile_update_button">Actualizar</string>
     <string name="profile_logout_button">Cerrar Sesión</string>
-    <string name="profile_updated">Perfil Actualizado</string>
+    <string name="profile_updated_success">Perfil Actualizado</string>
+    <string name="profile_updated_error">Error al Actualizar perfil</string>
 </resources>

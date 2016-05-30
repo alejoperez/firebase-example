@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.test.firebase.R;
 import com.test.firebase.base.BaseActivity;
 import com.test.firebase.home.HomeActivity;
@@ -13,7 +11,7 @@ import com.test.firebase.main.MainActivity;
 
 public class SplashActivity extends BaseActivity implements ISplashView {
 
-    private FirebaseUser user;
+    private ISplashPresenter splashPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +23,7 @@ public class SplashActivity extends BaseActivity implements ISplashView {
 
     @Override
     public void loadData() {
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        splashPresenter = new SplashPresenter(this);
     }
 
     @Override
@@ -33,18 +31,9 @@ public class SplashActivity extends BaseActivity implements ISplashView {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
-                checkCurrentUser();
+                splashPresenter.checkCurrentUser();
             }
         }, 2000);
-    }
-
-    @Override
-    public void checkCurrentUser() {
-        if (user != null) {
-            openMainActivity();
-        } else {
-            openHomeActivity();
-        }
     }
 
     @Override

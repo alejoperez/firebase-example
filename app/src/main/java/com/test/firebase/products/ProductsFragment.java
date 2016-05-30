@@ -9,23 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.test.firebase.R;
-import com.test.firebase.model.Product;
 import com.test.firebase.model.ProductList;
 
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ProductsFragment extends Fragment implements IProductsView,ValueEventListener {
+public class ProductsFragment extends Fragment implements IProductsView {
 
     @Bind(R.id.products_recycler_view)
     RecyclerView recyclerView;
+
+    private ProductsAdapter adapter;
 
     public static ProductsFragment newInstance() {
         return new ProductsFragment();
@@ -41,27 +37,24 @@ public class ProductsFragment extends Fragment implements IProductsView,ValueEve
 
     @Override
     public void loadData() {
-        FirebaseDatabase.getInstance().getReference().addValueEventListener(this);
+        IProductsPresenter productsPresenter = new ProductsPresenter(this);
+        productsPresenter.loadProducts();
     }
 
     @Override
-    public void onDataChange(DataSnapshot dataSnapshot) {
-        ProductList productList = dataSnapshot.getValue(ProductList.class);
-        loadView(productList);
+    public void onLoadProductsSuccess(ProductList productList) {
+        if (adapter != null) {
+            adapter.setProductList(productList);
+        } else {
+            adapter = new ProductsAdapter(productList);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setAdapter(adapter);
+        }
     }
 
-    @Override
-    public void onCancelled(DatabaseError databaseError) {
-        Toast.makeText(getContext(),databaseError.getMessage(),Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void loadView(ProductList productList) {
-        ProductsAdapter adapter = new ProductsAdapter(productList);
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+    public void onLoadProductsFail() {
+        Toast.makeText(getContext(),R.string.products_load_fail,Toast.LENGTH_SHORT).show();
     }
 
 }
